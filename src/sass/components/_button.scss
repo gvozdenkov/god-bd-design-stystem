@@ -1,50 +1,121 @@
+@use 'sass:map';
 @use '../abstracts/' as *;
 
 .button {
   --max-height: 38px;
-  --bg-color: #{$button-primary-background-color};
-  --color: #{$button-primary-color};
-  --border-color: transparent;
   --border-size: #{$button-border-size};
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
+  position: relative;
+
   height: var(--max-height);
 
   border: var(--border-size) solid;
-  border-color: var(--border-color);
-  border-radius: $size-3;
+  border-color: $button-outline-background-color;
+  border-radius: $button-border-radius;
 
   font-size: var(--fs-400);
   line-height: 1.2;
   font-weight: $fw-600;
   text-transform: $button-text-transform;
   text-decoration: $button-text-decoration;
-  color: var(--color);
+  color: $button-primary-color;
 
-  background-color: var(--bg-color);
+  background-color: $button-primary-background-color;
 
   cursor: pointer;
 
   transition: ease-out 200ms;
 
-  @each $icon-type, $icon-file-name in $icons {
-    &_icon_#{$icon-type} {
-      & > :where(.button__content) {
-        display: flex;
-        align-items: center;
-        gap: $size-2;
+  &:has(.button__content) {
+    gap: $size-2;
+  }
 
-        &::before {
-          content: '';
-          display: block;
-          background-color: $button-primary-icon-color;
-          mask: url(/assets/#{$icon-file-name}.svg);
-          width: 24px;
-          height: 24px;
-        }
+  &::before {
+    background-color: $button-primary-icon-color;
+  }
+
+  &:is(:hover, :focus) {
+    background-color: #{$button-primary-background-color-hover};
+  }
+
+  &[data-badge-value]::after {
+    content: attr(data-badge-value);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 19px;
+    height: 19px;
+
+    font-size: 0.625rem;
+    font-weight: $fw-600;
+    color: $clr-neutral-100;
+
+    background-color: $clr-accent-400;
+    border-radius: $button--badge-border-radius;
+  }
+
+  &_type_confirm {
+    color: $button-confirm-color;
+    background-color: $button-confirm-background-color;
+    border-color: $button-confirm-border-color;
+
+    &:is(:hover, :focus) {
+      color: $button-confirm-color-hover;
+      background-color: $button-confirm-background-color-hover;
+      border-color: $button-confirm-border-color-hover;
+    }
+  }
+
+  &_type_cancel {
+    color: $button-cancel-color;
+    background-color: $button-cancel-background-color;
+    border-color: $button-cancel-border-color;
+
+    &:is(:hover, :focus) {
+      color: $button-cancel-color-hover;
+      background-color: $button-cancel-background-color-hover;
+      border-color: $button-cancel-border-color-hover;
+    }
+  }
+
+  @each $name, $icon-map in $icons {
+    &_icon_#{$name}:has(.button__content) {
+      display: flex;
+      align-items: center;
+
+      &::before {
+        $icon-width: map.get($icon-map, 'width');
+        $icon-height: map.get($icon-map, 'height');
+        $icon-file-name: map.get($icon-map, 'file');
+
+        content: '';
+        display: block;
+        mask: url(/assets/#{$icon-file-name}.svg);
+        width: $icon-width;
+        height: $icon-height;
+      }
+
+      &:is(:disabled) > .button__content::before {
+        background-color: $button-color-disabled;
+      }
+    }
+
+    &_icon_#{$name}:not(:has(.button__content)) {
+      &::before {
+        $icon-width: map.get($icon-map, 'width');
+        $icon-height: map.get($icon-map, 'height');
+        $icon-file-name: map.get($icon-map, 'file');
+
+        content: '';
+        display: block;
+        mask: url(/assets/#{$icon-file-name}.svg);
+        width: $icon-width;
+        height: $icon-height;
       }
 
       &:is(:disabled) > .button__content::before {
@@ -53,54 +124,113 @@
     }
   }
 
-  &:is(:hover, :focus) {
-    --bg-color: #{$button-primary-background-color-hover};
-  }
+  &_type_outline {
+    color: $button-outline-color;
+    background-color: $button-outline-background-color;
+    border-color: $button-outline-border-color;
 
-  &_type_confirm {
-    --bg-color: #{$button-confirm-background-color};
+    &::before {
+      background-color: $button-outline-color;
+    }
 
     &:is(:hover, :focus) {
-      --bg-color: #{$button-confirm-background-color-hover};
+      color: $button-outline-color-hover;
+      background-color: $button-outline-background-color-hover;
+      border-color: $button-outline-border-color-hover;
+
+      &::before {
+        background-color: $button-outline-icon-color-hover;
+      }
+    }
+
+    &:disabled {
+      color: $button-outline-color-disabled;
+      background-color: $button-outline-background-color-disabled;
+      border-color: $button-outline-background-color-disabled;
     }
   }
 
-  &_type_cancel {
-    --bg-color: #{$button-cancel-background-color};
+  &_type_vacuum {
+    color: $button-vacuum-color;
+    background-color: $button-vacuum-background-color;
+    border-color: $button-vacuum-border-color;
+
+    &::before {
+      background-color: $button-vacuum-color;
+    }
 
     &:is(:hover, :focus) {
-      --bg-color: #{$button-cancel-background-color-hover};
+      color: $button-vacuum-color-hover;
+      background-color: $button-vacuum-background-color-hover;
+      border-color: $button-vacuum-border-color-hover;
+
+      & > .button__content::before {
+        background-color: $button-vacuum-icon-color-hover;
+      }
+    }
+
+    &:disabled {
+      color: $button-vacuum-color-disabled;
+      background-color: #{$button-vacuum-background-color-disabled};
+      border-color: #{$button-vacuum-background-color-disabled};
     }
   }
 
-  // &_type_outline {
-  //   --bg-color: transparent;
-  //   --color: #{$clr-btn-text-ouline};
-  //   --border-color: #{$clr-btn-outline-border};
+  &[data-badge-value] {
+    --font-size: 10px;
+    --display: flex;
+    --align-items: center;
+    --justify-content: center;
+    --size: 19px;
+    --border-radius: 6px;
 
-  //   & > .button__content::before {
-  //     background-color: $clr-btn-text-ouline;
-  //   }
+    &:has(.button__content)::after {
+      content: attr(data-badge-value);
 
-  //   &:is(:hover, :focus) {
-  //     --color: #{$clr-btn-text-ouline-hover};
-  //     --border-color: #{$clr-btn-ouline-hover};
-  //     --bg-color: transparent;
+      display: var(--display);
+      align-items: var(--align-items);
+      justify-content: var(--justify-content);
 
-  //     & > .button__content::before {
-  //       background-color: $clr-btn-icon-ouline-hover;
-  //     }
-  //   }
+      width: var(--size);
+      height: var(--size);
+      font-size: var(--font-size);
 
-  //   &:disabled {
-  //     border-color: $clr-btn-outline-border-disabled;
-  //   }
-  // }
+      background-color: $button-outline-icon-color;
+      border-radius: var(--border-radius);
+      color: white;
+    }
+
+    &:not(:has(.button__content))::after {
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate(50%, -50%);
+
+      content: attr(data-badge-value);
+
+      display: var(--display);
+      align-items: var(--align-items);
+      justify-content: var(--justify-content);
+
+      width: var(--size);
+      height: var(--size);
+      border-radius: var(--border-radius);
+
+      font-size: var(--font-size);
+      color: white;
+
+      background-color: $button-outline-icon-color;
+    }
+  }
 
   &:disabled {
-    --bg-color: #{$button-primary-background-color-disabled};
-    --color: #{$button-color-disabled};
+    background-color: $button-primary-background-color-disabled;
+    color: $button-color-disabled;
     cursor: not-allowed;
+
+    &::before {
+      background-color: $button-color-disabled;
+    }
   }
 
   @include mq(medium) {

@@ -1,4 +1,22 @@
 $icons: (
-  'check': 'check-mark',
-  'cancel': 'cancel',
+  'check': (
+    'file': 'check-mark',
+    'width': 22px,
+    'height': 22px,
+  ),
+  'cancel': (
+    'file': 'cancel',
+    'width': 22px,
+    'height': 22px,
+  ),
+  'add': (
+    'file': 'add',
+    'width': 16px,
+    'height': 16px,
+  ),
+  'filter': (
+    'file': 'filter',
+    'width': 24px,
+    'height': 24px,
+  ),
 );

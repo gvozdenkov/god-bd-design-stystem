@@ -29,6 +29,8 @@ $container-max-width-wide: 100rem;
 $button-text-transform: none;
 $button-text-decoration: none;
 $button-border-size: 2px;
+$button-border-radius: $size-3;
+$button--badge-border-radius: 6px;
 
 $button-color-disabled: $clr-neutral-600;
 // PRIMARY
@@ -41,9 +43,45 @@ $button-primary-icon-color-disabled: $clr-neutral-500;
 $button-primary-background-color-disabled: $clr-neutral-200;
 
 // Confirm
+$button-confirm-color: $clr-neutral-100;
+$button-confirm-color-hover: $clr-neutral-100;
 $button-confirm-background-color: $clr-success-400;
 $button-confirm-background-color-hover: $clr-success-500;
+$button-confirm-border-color: $clr-success-400;
+$button-confirm-border-color-hover: $clr-success-500;
 
 // Cancel
+$button-cancel-color: $clr-neutral-100;
+$button-cancel-color-hover: $clr-neutral-100;
 $button-cancel-background-color: $clr-danger-400;
 $button-cancel-background-color-hover: $clr-danger-500;
+$button-cancel-border-color: $clr-danger-400;
+$button-cancel-border-color-hover: $clr-danger-500;
+
+// OUTLINE
+$button-outline-color: $clr-accent-400;
+$button-outline-color-hover: $clr-accent-500;
+$button-outline-icon-color: $clr-accent-400;
+$button-outline-icon-color-hover: $clr-accent-500;
+$button-outline-border-color: $clr-accent-400;
+$button-outline-border-color-hover: $clr-accent-500;
+$button-outline-background-color: transparent;
+$button-outline-background-color-hover: transparent;
+
+$button-outline-color-disabled: $clr-neutral-500;
+$button-outline-background-color-disabled: $clr-neutral-200;
+$button-outline-border-color-disabled: $clr-neutral-200;
+
+// VACUUM
+$button-vacuum-color: $clr-accent-400;
+$button-vacuum-color-hover: $clr-accent-500;
+$button-vacuum-icon-color: $clr-accent-400;
+$button-vacuum-icon-color-hover: $clr-accent-500;
+$button-vacuum-border-color: transparent;
+$button-vacuum-border-color-hover: transparent;
+$button-vacuum-background-color: transparent;
+$button-vacuum-background-color-hover: $clr-accent-100;
+
+$button-vacuum-color-disabled: $clr-neutral-500;
+$button-vacuum-background-color-disabled: $clr-neutral-200;
+$button-vacuum-border-color-disabled: $clr-neutral-200;
