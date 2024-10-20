@@ -22,21 +22,18 @@
     <section class="section">
       <h2 class="fs-800 fw-medium text-center mb-24">Buttons</h2>
       <div class="container">
-        <h2 class="fs-600 mb-12">Primary</h2>
+        <h2 class="fs-600 mb-6">Primary</h2>
         <div class="grid-auto-fit" style="--grid-gap: 0.5rem">
           <button class="button button_icon_check">
             <span class="button__content">Button</span>
           </button>
-
           <button class="button"><span class="button__content">Button</span></button>
 
-          <button class="button button_icon_check">
-            <span class="button__content"></span>
-          </button>
+          <button class="button button_icon_check"></button>
 
-          <button class="button button_type_confirm button_icon_check">
-            <span class="button__content"></span>
-          </button>
+          <button class="button button_type_confirm button_icon_check"></button>
+
+          <button class="button button_type_cancel button_icon_cancel"></button>
 
           <button class="button button_icon_check" disabled>
             <span class="button__content">Button</span>
@@ -46,17 +43,15 @@
             <span class="button__content">Button</span>
           </button>
 
-          <button class="button button_icon_check" disabled>
-            <span class="button__content"></span>
-          </button>
-
-          <button class="button button_type_cancel button_icon_cancel">
-            <span class="button__content"></span>
-          </button>
+          <button class="button button_icon_check" disabled></button>
         </div>
-        <h2 class="fs-600 mb-12">Outline</h2>
+        <h2 class="fs-600 mb-6">Outline</h2>
         <div class="grid-auto-fit" style="--grid-gap: 0.5rem">
           <button class="button button_type_outline button_icon_cancel">
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_outline button_icon_add">
             <span class="button__content">Button</span>
           </button>
 
@@ -64,12 +59,53 @@
             <span class="button__content">Button</span>
           </button>
 
-          <button class="button button_type_outline button_icon_cancel">
-            <span class="button__content"></span>
+          <button class="button button_type_outline button_icon_check"></button>
+
+          <button class="button button_type_outline" data-badge-value="2">
+            <span class="button__content">Button</span>
           </button>
+
+          <button
+            class="button button_type_outline button_icon_check"
+            data-badge-value="4"
+          ></button>
+
           <button class="button button_type_outline button_icon_cancel" disabled>
             <span class="button__content">Button</span>
           </button>
+
+          <button class="button button_type_outline" disabled>
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_outline button_icon_cancel" disabled></button>
+        </div>
+
+        <h2 class="fs-600 mb-6">Vacuum</h2>
+        <div class="grid-auto-fit" style="--grid-gap: 0.5rem">
+          <button class="button button_type_vacuum button_icon_cancel">
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_vacuum">
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_vacuum button_icon_check"></button>
+
+          <button class="button button_type_vacuum button_icon_add" data-badge-value="2">
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_vacuum button_icon_cancel" disabled>
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_vacuum" disabled>
+            <span class="button__content">Button</span>
+          </button>
+
+          <button class="button button_type_vacuum button_icon_cancel" disabled></button>
         </div>
       </div>
     </section>
